@@ -63,7 +63,7 @@ function setup() {
   createCanvas(windowWidth, windowHeight);
   windowResized();
   tirada = tirar();
-  // console.log(JSON.stringify(tirada));
+  mostrarCoordenadasComoTexto(tirada);
 }
 
 function draw() {
@@ -118,6 +118,14 @@ function dibujarCuadricula(tirada) {
       casilla * 0.8
     );
   }
+}
+
+function mostrarCoordenadasComoTexto(tirada) {
+  let coordenadas = "";
+  tirada.forEach((elem) => {
+    coordenadas += elem.y + elem.x + " ";
+  });
+  document.querySelector("#alt-text").innerHTML = coordenadas;
 }
 
 function windowResized() {
