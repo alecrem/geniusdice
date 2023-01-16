@@ -144,5 +144,12 @@ function windowResized() {
 }
 
 function mouseClicked() {
-  setup();
+  if (
+    mouseX >= 0 &&
+    mouseX < windowWidth &&
+    mouseY >= 0 &&
+    mouseY < windowHeight
+  ) {
+    setup();
+  }
 }
