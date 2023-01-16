@@ -1,7 +1,11 @@
 var offsetX,
   offsetY,
   sqSide,
-  reRollButton = null;
+  reRollButton = null,
+  bgColor,
+  letteringColor,
+  gridColor,
+  boulderColor;
 const dado = [
   [
     { y: "A", x: 4 },
@@ -65,6 +69,7 @@ var tirada = [];
 function setup() {
   createCanvas(windowWidth, windowHeight);
   windowResized();
+  inicializarColores();
   tirada = tirar();
   mostrarCoordenadasComoTexto(tirada);
   if (reRollButton === null) {
@@ -75,11 +80,18 @@ function setup() {
 }
 
 function draw() {
-  background(40);
+  background(bgColor);
   push();
   translate(offsetX, offsetY);
   dibujarCuadricula(tirada);
   pop();
+}
+
+function inicializarColores() {
+  bgColor = color("#000");
+  letteringColor = color("#9ababc");
+  gridColor = color("#9ababc");
+  boulderColor = color("#9ababc");
 }
 
 function tirar() {
@@ -93,8 +105,8 @@ function dibujarCuadricula(tirada) {
   const posicionesY = ["A", "B", "C", "D", "E", "F"];
   const casilla = (sqSide * 0.95) / 7;
   textSize(casilla * 0.6);
-  strokeWeight(sqSide * 0.02);
-  fill(200);
+  strokeWeight(sqSide * 0.01);
+  fill(gridColor);
   for (y = casilla; y < sqSide; y += casilla) {
     if (y < sqSide * 0.9) {
       noStroke();
@@ -104,7 +116,7 @@ function dibujarCuadricula(tirada) {
         y + casilla * 0.8
       );
     }
-    stroke(64);
+    stroke(gridColor);
     line(casilla, y, casilla * 7, y);
   }
   for (x = casilla; x < sqSide; x += casilla) {
@@ -112,11 +124,11 @@ function dibujarCuadricula(tirada) {
       noStroke();
       text(round(x / casilla), x + casilla * 0.3, casilla * 0.8);
     }
-    stroke(64);
+    stroke(gridColor);
     line(x, casilla, x, casilla * 7);
   }
   noStroke();
-  fill(150, 120, 80);
+  fill(boulderColor);
   for (d in tirada) {
     const posicion = [tirada[d].x - 1, posicionesY.indexOf(tirada[d].y)];
     ellipse(
