@@ -1,4 +1,7 @@
-var offsetX, offsetY, sqSide;
+var offsetX,
+  offsetY,
+  sqSide,
+  reRollButton = null;
 const dado = [
   [
     { y: "A", x: 4 },
@@ -64,6 +67,11 @@ function setup() {
   windowResized();
   tirada = tirar();
   mostrarCoordenadasComoTexto(tirada);
+  if (reRollButton === null) {
+    reRollButton = createButton("Nueva partida");
+    reRollButton.parent("coordinates");
+    reRollButton.mouseClicked(setup);
+  }
 }
 
 function draw() {

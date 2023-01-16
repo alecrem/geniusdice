@@ -8,11 +8,17 @@ canvas {
   display: block;
 }
 #coordinates {
-  padding: 0.5em;
+  padding: 0.2em;
   background-color: #000;
   color: #fff;
   text-align: center;
   font-family: sans-serif;
   font-weight: 400;
   font-size: 4em;
+}
+
+#coordinates button {
+  padding: 0.2em 0.4em;
+  text-align: center;
+  font-size: 1em;
 }
